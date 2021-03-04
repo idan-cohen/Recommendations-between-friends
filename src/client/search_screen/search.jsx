@@ -72,7 +72,15 @@ const SearchPage = ()=>{
         history.push('/profile')
     }
     const searcher = () => {
-        history.push('/place');
+        axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=%D7%A6%D7%93%D7%A7%D7%99%D7%94%D7%95&inputtype=textquery&key=AIzaSyAwDMLyr-bnACemh9KSmaW74rB5GLGFun0`,
+        {headers : {"Access-Control-Allow-Origin": "*"}
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     return(
@@ -85,9 +93,9 @@ const SearchPage = ()=>{
                 </div>
             </header>
             <section className="section">
-                <button className="btn"><IoRestaurant style={{fontSize:36}}/><p/>מסעדה</button>
-                <button className="btn"><SiCoffeescript style={{fontSize:36}}/><p/>בית קפה</button>
-                <button className="btn"><FaTheaterMasks style={{fontSize:36}}/><p/>הצגה</button>
+                <button onClick = {()=> history.push('/movie')} className="btn"><IoRestaurant style={{fontSize:36}}/><p/>מסעדה</button>
+                <button onClick = {()=> history.push('/place')} className="btn"><SiCoffeescript style={{fontSize:36}}/><p/>בית קפה</button>
+                <button onClick = {searcher} className="btn"><FaTheaterMasks style={{fontSize:36}}/><p/>הצגה</button>
                 <button className="btn"><GiPopcorn style={{fontSize:36}}/><p/>סרט</button>
                 <button className="btn"><GiWhiteBook style={{fontSize:36}}/><p/>ספר</button>
 
