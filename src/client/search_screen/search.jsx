@@ -83,8 +83,8 @@ const SearchPage = ()=>{
         })
     }
     const searchBooks = () => {
-        axios.get(`https://rec-bf.netlify.app/https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCxqgytYz4Y_bRBMlJ1vms2aA5fU1Lm074`,
-        {headers : {"Access-Control-Allow-Origin": "*"}}
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCxqgytYz4Y_bRBMlJ1vms2aA5fU1Lm074`,
+        {headers : {"Access-Control-Allow-Origin": "http://127.0.0.1:3000"}}
         )
         .then(res => {
             console.log(res)
