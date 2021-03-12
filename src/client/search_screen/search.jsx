@@ -57,7 +57,6 @@ const SearchPage = ()=>{
             
         }).catch(err => {
             window.localStorage.setItem('logged',false)
-            console.log('err in useEffect')
         })
     },[])
 
@@ -72,9 +71,10 @@ const SearchPage = ()=>{
         history.push('/profile')
     }
     const searcher = () => {
-        axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJS1oDEh4oAxURdy5Qkzxy2CE&fields=name,rating,formatted_phone_number&key=AIzaSyAwDMLyr-bnACemh9KSmaW74rB5GLGFun0`,
-        {headers : {"Access-Control-Allow-Origin": "*"}}
-        )
+        axios({
+            method : 'get',
+            url : `https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyAwDMLyr-bnACemh9KSmaW74rB5GLGFun0&input=צדקיהו`
+        })
         .then(res => {
             console.log(res)
         })
@@ -82,11 +82,14 @@ const SearchPage = ()=>{
             console.log(err)
         })
     }
+    
+
+
     const searchBooks = () => {
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCxqgytYz4Y_bRBMlJ1vms2aA5fU1Lm074`,
-        {headers : {"Access-Control-Allow-Origin": "https://rec-bf.netlify.app/", 
-                    "Access-Control-Allow-Methods" : "GET, PUT, POST, DELETE, HEAD, OPTIONS"}}
-        )
+        axios({
+            method : 'get',
+            url : `https://www.googleapis.com/books/v1/volumes?q=מקום+טוב&key=AIzaSyCxqgytYz4Y_bRBMlJ1vms2aA5fU1Lm074`
+        })
         .then(res => {
             console.log(res)
         })
